@@ -1,9 +1,19 @@
 # PostgreSQL
-
 ### Pull and Run container
 ```
 podman pull postgres:latest
-podman run -d -p 5432:5432 --name postgres -e POSTGRES_USER=support -e POSTGRES_PASSWORD=strongPassword123 -e POSTGRES_DB=support postgres:latest
+podman run -d --name postgres \
+-e POSTGRES_USER=support \
+-e POSTGRES_PASSWORD=strongPassword123 \
+-e POSTGRES_DB=support \
+-e PGUSER=support
+-p 5432:5432
+--health-cmd 'pg_isready -d db_prod' \
+--health-interval 30s \
+--health-timeout 10s \
+--health-retries 5 \
+--health-start-period 80s \
+postgres:latest
 ```
 
 ### Attach to container
