@@ -1,8 +1,8 @@
 # AutoPass License Server
 ### Pull and Run container
 ```
-podman pull mfsharedtech/apls:12.3.0-latest
-podman run -d --name apls --privileged=true -p 5814:5814 -e EULA='true' -e TIME_ZONE=GMT mfsharedtech/apls:12.3.0-latest
+podman pull mfsharedtech/apls:latest
+podman run -d --name apls --privileged=true -p 5814:5814 -e EULA='true' -e TIME_ZONE=GMT mfsharedtech/apls:latest
 ```
 
 ### Attach to container
