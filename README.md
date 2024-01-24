@@ -1,7 +1,7 @@
 # [UNiXPod](https://github.com/UNiXMIT/UNiXPod)
 ### A collection of commands to create databases and services in containers. 
 All commands are based on and tested with podman on Linux/Windows.  
-Commands should work with Docker too, just replace podman with docker.  
+Commands should work with Docker too, just replace 'podman' with 'docker' in the commands.  
 
 ## Containers
 - [SQL Server](mssql.md)
