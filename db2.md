@@ -2,7 +2,19 @@
 ### Pull and Run container
 ```
 podman pull icr.io/db2_community/db2
-podman run -itd --name db2 --privileged=true -p 50000:50000 -e LICENSE=accept -e DB2INSTANCE=support -e DB2INST1_PASSWORD=strongPassword123 -e DBNAME=support icr.io/db2_community/db2
+podman run -itd --name db2 \
+--privileged=true \
+-p 50000:50000 \
+-e LICENSE=accept \
+-e DB2INSTANCE=support \
+-e DB2INST1_PASSWORD=strongPassword123 \
+-e DBNAME=support \
+--health-cmd '/opt/ibm/db2/*/bin/db2gcf -s' \
+--health-interval 30s \
+--health-timeout 10s \
+--health-retries 5 \
+--health-start-period 120s \
+icr.io/db2_community/db2
 ```
 
 ### Attach to container
@@ -26,6 +38,16 @@ t – terminated – the statements are terminated with a delimiter. The default
 v – verbose – the statement will be echoed in output prior to the result of the statement. This is extremely useful when reviewing output or troubleshooting failed statements.  
 m – prints the number of lines affected by DML.  
 f – file – indicates that db2 should execute statements from a file, with the filename specified one space after the f.  
+
+### Create new database
+Using DB2 defaults:  
+```
+db2 create database support
+```
+Using specific codeset and territory:  
+```
+db2 create database support using codeset 1256 territory AA
+```
 
 ### Remove your container
 ```
