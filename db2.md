@@ -75,11 +75,22 @@ db2cli install -setup
 
 ### odbcinst.ini
 ```
-[DB2]
+[DB2 ODBC Driver]
 Description = DB2 Driver
 Driver = <instance_path>/lib/libdb2o.so
 fileusage=1
 dontdlclose=1
+```
+
+### odbc.ini
+```
+[db2]
+Driver = DB2 ODBC Driver
+Database = support
+Server = localhost
+Port = 50000
+UID = support
+PWD = strongPassword123
 ```
 
 ### Source
