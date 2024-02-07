@@ -51,11 +51,18 @@ sudo dnf install [Oracle Instant Client + ODBC .rpm]
 rpm -ql oracle-instantclient-odbc-*
 ```
 
+### Setup ODBC Driver and DSN
+```
+cd /opt/oracle/instantclient_21_13
+chmod +x odbc_update_ini.sh
+odbc_update_ini.sh / /opt/oracle/instantclient_21_13 "Oracle 21 ODBC driver" Oracle /etc/odbc.ini
+```
+
 ### odbc.ini
 ```
 [oracle]
 Description     = Oracle ODBC Connection
-Driver          = /usr/lib/oracle/19.9/client64/lib/libsqora.so.19.1
+Driver          = /usr/lib/oracle/21/client64/lib/libsqora.so.21.1
 Database        = support
 Servername      = 127.0.0.1:1521/FREE
 UserID          = support
