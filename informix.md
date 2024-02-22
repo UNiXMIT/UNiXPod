@@ -28,19 +28,17 @@ dbaccess
 ```
 
 ### Ports
-9088 - TCP
-9089 - DRDA
-27017 - Mongo
-27018 - REST
-27883 - MQTT
+9088 - TCP  
+9089 - DRDA  
+27017 - Mongo  
+27018 - REST  
+27883 - MQTT  
 
 ### Informix CSDK
 ```
 podman pull ibmcom/informix-developer-sandbox
 podman run -d -it --name IFX -h IFX --privileged -e LICENSE=accept ibmcom/informix-developer-sandbox
 podman cp IFX:/home/informix /home/
-export informix_OPT=/home/informix/odbc
-. setenvacu.sh informix
 sudo mkdir -p /usr/informix/lib/esql
 sudo ln -s /home/informix/odbc/lib/esql/checkapi.o /usr/informix/lib/esql
 ```
