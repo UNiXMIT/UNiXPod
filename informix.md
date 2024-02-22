@@ -1,8 +1,8 @@
 # Informix
 #### Pull and Run container
 ```
-podman pull ibmcom/informix-developer-database:latest
-podman run -d -it --name informix -h informix --privileged -p 9088:9088 -e LICENSE=accept ibmcom/informix-developer-database:latest
+podman pull icr.io/informix/informix-developer-database
+podman run -d -it --name informix -h informix --privileged -p 9088:9088 -e LICENSE=accept  	icr.io/informix/informix-developer-database
 ```
 
 ### Attach to container
@@ -47,4 +47,5 @@ sudo ln -s /home/informix/odbc/lib/esql/checkapi.o /usr/informix/lib/esql
 informix        onsoctcp        localhost         9088  
 
 ### Source
-https://dockr.ly/2BWRpaH
+https://ibm.co/3OTAwDT
+https://bit.ly/3uHP4zo
