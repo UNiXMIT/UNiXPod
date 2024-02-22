@@ -2,23 +2,14 @@
 
 ### Pull and Run container
 ```
-podman pull datagrip/sybase
-podman run -d -t -p 5000:5000 --name sybase datagrip/sybase
+podman pull superbeeeeeee/docker-sybase
+podman run -d -it --name sybase -e SA_PASSWORD=strongPassword123 -e DATABASE=support -p 5000:5000 superbeeeeeee/docker-sybase
 ```
 
-### Guest User
-
-Environment variable	Default value  
-SYBASE_USER	            tester  
-SYBASE_PASSWORD	        guest1234  
-SYBASE_DB	            testdb  
-
-
-### Admin User
-Environment variable	Default value  
+### User
 SYBASE_USER	            sa  
-SYBASE_PASSWORD         myPassword  
-
+SYBASE_PASSWORD	        strongPassword123  
+SYBASE_DB	            support  
 
 ### Attach to container
 ```
@@ -31,5 +22,14 @@ podman stop sybase
 podman rm sybase
 ```
 
+### Sybase Environment
+```
+podman cp sybase:/opt/sap /home/
+export PATH="/home/sap/OCS-16_0/bin":$PATH
+export LD_LIBRARY_PATH="/home/sap/OCS-16_0/lib:/home/sap/OCS-16_0/lib3p64:/home/sap/OCS-16_0/lib3p":$LD_LIBRARY_PATH
+export SYBASE=/home/sap
+isql -U sa -P strongPassword123 -S SYBASE -I /home/sap/interfaces
+```
+
 ### Source
-https://dockr.ly/2VofqCc  
+https://bit.ly/3wkNtQu  
