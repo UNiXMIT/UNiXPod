@@ -2,7 +2,7 @@
 #### Pull and Run container
 ```
 podman pull icr.io/informix/informix-developer-database
-podman run -d -it --name informix -h informix --privileged -p 9088:9088 -e LICENSE=accept  	icr.io/informix/informix-developer-database
+podman run -d -it --name informix -h informix --privileged -p 9088:9088 -e LICENSE=accept icr.io/informix/informix-developer-database
 ```
 
 ### Attach to container
