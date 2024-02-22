@@ -14,6 +14,7 @@ podman exec -it informix bash
 ```
 Username: informix
 Password: in4mix
+Database: sysmaster
 ```
 
 ### Remove container
