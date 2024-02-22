@@ -48,5 +48,5 @@ sudo ln -s /home/informix/odbc/lib/esql/checkapi.o /usr/informix/lib/esql
 informix        onsoctcp        localhost         9088  
 
 ### Source
-https://ibm.co/3OTAwDT
-https://bit.ly/3uHP4zo
+https://ibm.co/3OTAwDT  
+https://bit.ly/3uHP4zo  
