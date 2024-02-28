@@ -2,7 +2,19 @@
 #### Pull and Run container
 ```
 podman pull ibmcom/mq:latest
-podman run --name mq -e LICENSE=accept -e MQ_QMGR_NAME=QM1 -p 1414:1414 -p 9443:9443 -e MQ_ADMIN_PASSWORD=yourPassword123 -e MQ_APP_PASSWORD=yourPassword123 -d icr.io/ibm-messaging/mq:latest
+podman run -d --name mq \
+-e LICENSE=accept \
+-e MQ_QMGR_NAME=QM1 \
+-p 1414:1414 \
+-p 9443:9443 \
+-e MQ_ADMIN_PASSWORD=yourPassword123 \
+-e MQ_APP_PASSWORD=yourPassword123 \
+--health-cmd '/usr/local/bin/chkmqhealthy || exit 1' \
+--health-interval 1m \
+--health-timeout 30s \
+--health-retries 3 \
+--health-start-period 60s \
+icr.io/ibm-messaging/mq:latest
 ```
 
 #### MQ Version Information
