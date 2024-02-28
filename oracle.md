@@ -69,8 +69,8 @@ UserID          = support
 ```
 
 ### tnsnames.ora
-Default Location - $ORACLE_HOME\network\admin    
-TNS_ADMIN - Changes the directory path of Oracle Net Services configuration files from the default location of $ORACLE_HOME\network\admin   
+Default Location - $ORACLE_HOME/network/admin    
+TNS_ADMIN - Changes the directory path of Oracle Net Services configuration files from the default location of $ORACLE_HOME/network/admin   
 ```
 oracle =
   (DESCRIPTION=
@@ -80,6 +80,19 @@ oracle =
     (SERVICE_NAME=FREE)
   )
 )
+```
+
+### sqlnet.ora
+Default Location - $ORACLE_HOME/network/admin
+Connections to Oracle Database from clients earlier than release 10g fail with the error ORA-28040: No matching authentication protocol.  
+
+Starting with Oracle Database 18c, the default value for the SQLNET.ALLOWED_LOGON_VERSION parameter changes from 11 in Oracle Database 12c (12.2) to 12 in Oracle Database 18c. The use of this parameter is deprecated.  
+
+SQLNET.ALLOWED_LOGON_VERSION is now replaced with the SQLNET.ALLOWED_LOGON_VERSION_SERVER and SQLNET.ALLOWED_LOGON_VERSION_CLIENT parameters.  
+
+```
+SQLNET.ALLOWED_LOGON_VERSION_SERVER=8
+SQLNET.ALLOWED_LOGON_VERSION_CLIENT=8
 ```
 
 ### ORA-12526, TNS:listener: all appropriate instances are in restricted mode.
