@@ -32,6 +32,30 @@ cn=admin,dc=secldap,dc=com
 cn=support,dc=secldap,dc=com
 ```
 
+### Add Users
+```
+sudo podman exec -it openldap ldapadd -x -H ldap://localhost:1389 -D "cn=admin,dc=secldap,dc=com" -f /bitnami/openldap/users.ldif -W
+```
+users.ldif example  
+```
+dn: uid=support,ou=users,dc=secldap,dc=com
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: inetOrgPerson
+cn: First Name
+sn: Last Name
+uid: support
+uidNumber: 5000
+gidNumber: 5000
+homeDirectory: /home/support
+mail: support@example.com
+```
+
+### Change User Password
+```
+sudo podman exec -it openldap ldappasswd -H ldap://localhost:1389 -D "cn=admin,dc=secldap,dc=com" -W -x "uid=support,ou=users,dc=secldap,dc=com"
+```
+
 ### Remove your container
 ```
 podman stop openldap
