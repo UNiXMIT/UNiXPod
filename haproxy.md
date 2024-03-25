@@ -6,6 +6,10 @@ podman run -d --name haproxy -v /home/support/haproxy:/usr/local/etc/haproxy:ro 
 ```
 **NOTE:** Your host's /home/support/haproxy directory should be populated with a file named haproxy.cfg  
 
+### --net=host
+Allow the container to have direct access to the host's network.  
+Instead of specifying any any port mappings, set --net=host on the run command.  
+
 ### Attach to container
 ```
 podman exec -it haproxy bash

@@ -2,13 +2,13 @@
 
 ### Download OpenLDAP for ES script
 ```
-curl -O https://raw.githubusercontent.com/UNiXMIT/UNiXMF/main/linux/openldap/podman.sh
-chmod +x podman.sh
+curl -o openldap.sh https://raw.githubusercontent.com/UNiXMIT/UNiXMF/main/linux/openldap/podman.sh
+chmod +x openldap.sh
 ```
 
 ### Build and Run container
 ```
-./podman.sh
+./openldap.sh
 ```
 
 ### Attach to container

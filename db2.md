@@ -68,9 +68,29 @@ db2 connect to <DBNAME> user <USERNAME>
 NODENAME - A local nickname you can set for the computer that has the database you want to catalog.  
 DBNAME - Name of remote database to catalog.  
 
-### Install ODBC Driver (cmd as Admin)
+### Install ODBC Driver (cmd as Admin on Windows only)
 ```
 db2cli install -setup
+```
+
+### odbcinst.ini
+```
+[DB2 ODBC Driver]
+Description = DB2 Driver
+Driver = <instance_path>/lib/libdb2o.so
+fileusage=1
+dontdlclose=1
+```
+
+### odbc.ini
+```
+[db2]
+Driver = DB2 ODBC Driver
+Database = support
+Server = localhost
+Port = 50000
+UID = support
+PWD = strongPassword123
 ```
 
 ### Source
