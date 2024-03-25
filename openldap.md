@@ -3,7 +3,21 @@
 ### Pull and Run container
 ```
 podman pull bitnami/openldap
-podman run -dit --name openldap -e LDAP_ROOT=dc=secldap,dc=com -e LDAP_ADMIN_USERNAME=admin -e LDAP_ADMIN_PASSWORD=strongPassword -e LDAP_USERS=support -e LDAP_PASSWORDS=strongPassword -e LDAP_PORT_NUMBER=1389 -p 1389:1389 bitnami/openldap:latest
+podman run -dit --name openldap \
+-v /home/support/openldap:/bitnami/openldap \
+-e LDAP_ROOT=dc=secldap,dc=com \
+-e LDAP_ADMIN_USERNAME=admin \
+-e LDAP_ADMIN_PASSWORD=strongPassword \
+-e LDAP_USERS=support \
+-e LDAP_PASSWORDS=strongPassword \
+-e LDAP_PORT_NUMBER=1389 \
+-p 1389:1389 \
+--health-interval=30s \
+--health-timeout=3s \
+--health-start-period=30s \
+--health-retries=3 \
+--health-cmd 'cat /opt/bitnami/openldap/var/run/slapd.pid || exit 1' \
+bitnami/openldap:latest
 ```
 
 ### Attach to container
