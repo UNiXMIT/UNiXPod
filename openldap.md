@@ -45,8 +45,8 @@ objectClass: inetOrgPerson
 cn: First Name
 sn: Last Name
 uid: support
-uidNumber: 5000
-gidNumber: 5000
+uidNumber: 1000
+gidNumber: 1000
 homeDirectory: /home/support
 mail: support@example.com
 ```
