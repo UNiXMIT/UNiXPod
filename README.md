@@ -17,6 +17,7 @@ Commands should work with Docker too, just replace 'podman' with 'docker' in the
 - [OpenLDAP](openldap.md)
 - [OpenLDAP for Enterprise Server](openldapES.md)
 - [NODE](node.md)
+- [Shadowsocks](shadowsocks.md)
 - [Squid](squid.md)
 - [NGiNX](nginx.md)
 - [MiniCA](minica.md)
