@@ -44,6 +44,9 @@ Using DB2 defaults:
 ```
 db2 create database support
 ```
+```
+db2 drop database support
+```
 Using specific codeset and territory:  
 ```
 db2 create database support using codeset 1256 territory AA

@@ -19,6 +19,7 @@ Commands should work with Docker too, just replace 'podman' with 'docker' in the
 - [NODE](node.md)
 - [Shadowsocks](shadowsocks.md)
 - [Squid](squid.md)
+- [Tailscale](tailscale.md)
 - [NGiNX](nginx.md)
 - [MiniCA](minica.md)
 - [HAProxy](haproxy.md)
