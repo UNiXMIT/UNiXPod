@@ -28,6 +28,8 @@ podman exec -it oracle sqlplus sys/strongPassword123@//localhost:1521/FREE as sy
 ALTER SESSION SET "_ORACLE_SCRIPT"=true;
 CREATE USER support IDENTIFIED BY strongPassword123;
 GRANT ALL PRIVILEGES TO support;
+GRANT SYSDBA TO support;
+GRANT SELECT ON V_\$INSTANCE TO support;
 EXIT;
 EOF
 ```
