@@ -31,12 +31,12 @@ db2 SELECT * FROM SUPPORT.SchemaName
 
 ### Connect to database and execute SQL from file
 ```
-db2 -t -vmf db2.sql |tee db2.sql.out
+db2 -xvtf db2.sql |tee db2.sql.out
 ```
 
 t – terminated – the statements are terminated with a delimiter. The default delimiter is the semi-colon.  
 v – verbose – the statement will be echoed in output prior to the result of the statement. This is extremely useful when reviewing output or troubleshooting failed statements.  
-m – prints the number of lines affected by DML.  
+x – This option tells the command line processor to return data without any headers, including column names. This flag does not affect all commands. It applies to SQL statements and some commands that are based on SQL statements such as LIST TABLES.    
 f – file – indicates that db2 should execute statements from a file, with the filename specified one space after the f.  
 
 ### Create new database
