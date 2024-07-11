@@ -56,9 +56,13 @@ Port                = 5432
 
 ### odbcinst.ini
 ```
-[PostgreSQL]
-Description     = ODBC for PostgreSQL
-Driver          = /usr/lib64/psqlodbcw.so
-Setup           = /usr/lib64/libodbcpsqlS.so
-FileUsage       = 1
+[PostgreSQL ANSI]
+Description=PostgreSQL ODBC driver (ANSI version)
+Driver=psqlodbca.so
+Setup=libodbcpsqlS.so
+
+[PostgreSQL Unicode]
+Description=PostgreSQL ODBC driver (Unicode version)
+Driver=psqlodbcw.so
+Setup=libodbcpsqlS.so
 ```
