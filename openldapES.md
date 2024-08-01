@@ -16,6 +16,11 @@ chmod +x openldap.sh
 podman exec -it openldap bash
 ```
 
+### Change Manager password
+```
+podman exec -it openldap /openldap/newpasswd.sh strongPassword123
+```
+
 ### DN
 ```
 BASE = cn=Micro Focus,dc=secldap,dc=com
