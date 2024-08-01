@@ -63,7 +63,7 @@ https://ibm.co/3JKDGaL
 
 ### Catalog remote database on client
 ```
-db2 catalog tcpip node <NODENAME> remote hostname|ip_address server service_name|port_number
+db2 catalog tcpip node <NODENAME> remote <HOSTNAME|IP_ADDRESS> server <SERVICE_NAME|PORT_NUMBER>
 db2 catalog database <DBNAME> at node <NODENAME>
 db2 terminate
 db2 connect to <DBNAME> user <USERNAME>
@@ -78,9 +78,9 @@ db2cli install -setup
 
 ### odbcinst.ini
 ```
-[DB2 ODBC Driver]
+[IBM DB2 ODBC DRIVER]
 Description = DB2 Driver
-Driver = <instance_path>/lib/libdb2o.so
+Driver = <instance_path>/sqllib/lib64/libdb2o.so
 fileusage=1
 dontdlclose=1
 ```
@@ -88,7 +88,7 @@ dontdlclose=1
 ### odbc.ini
 ```
 [db2]
-Driver = DB2 ODBC Driver
+Driver = IBM DB2 ODBC DRIVER
 Database = support
 Server = localhost
 Port = 50000
