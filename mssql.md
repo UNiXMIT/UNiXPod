@@ -7,7 +7,7 @@ podman run -d --name mssql \
 -e "ACCEPT_EULA=Y" \
 -e "MSSQL_COLLATION=SQL_Latin1_General_CP1_CI_AS" \
 -p 1433:1433 \
---health-cmd '/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "strongPassword123" -Q "SELECT 1" -b -o /dev/null' \
+--health-cmd '/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P "strongPassword123" -Q "SELECT 1" -b -o /dev/null' \
 --health-interval 10s \
 --health-timeout 3s \
 --health-retries 10 \
@@ -32,7 +32,7 @@ password: strongPassword123
 
 ### Create User and Database
 ```
-podman exec -it mssql /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P strongPassword123 -Q "CREATE DATABASE support; \
+podman exec -it mssql /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U SA -P strongPassword123 -Q "CREATE DATABASE support; \
 CREATE LOGIN support WITH PASSWORD='strongPassword123', DEFAULT_DATABASE=support; \
 ALTER SERVER ROLE sysadmin ADD MEMBER support; \
 CREATE USER support FOR LOGIN support; \
