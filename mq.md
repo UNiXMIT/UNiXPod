@@ -29,9 +29,6 @@ podman rm mq
 ```
 
 #### MQ Client Downloads
-https://www.ibm.com/support/pages/downloading-ibm-mq-94  
-
-**Redist Downloads**  
 https://developer.ibm.com/articles/mq-downloads/  
 Windows - https://ibm.biz/IBM-MQC-Redist-Win64zip  
 Linux - https://ibm.biz/IBM-MQC-Redist-LinuxX64targz  
