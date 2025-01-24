@@ -12,6 +12,7 @@ podman exec -it informix bash
 
 ### Container Details
 ```
+Server: informix
 Username: informix
 Password: in4mix
 Database: sysmaster
