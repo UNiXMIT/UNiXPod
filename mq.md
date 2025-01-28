@@ -42,7 +42,6 @@ podman exec -it mq dspmqver
 #### MQ Environment Variables
 ```
 MQSERVER=DEV.APP.SVRCONN/TCP/<IP/HOSTNAME>(1414)
-MQSAMP_USER_ID=app
 ```
 
 #### Remove your container
