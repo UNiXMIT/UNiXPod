@@ -44,6 +44,15 @@ podman exec -it mq dspmqver
 MQSERVER=DEV.APP.SVRCONN/TCP/<IP/HOSTNAME>(1414)
 ```
 
+#### ES Linux Environment Variables
+```
+ES_MQ_LIB=/opt/ibm/mq/lib64/libmqm.so
+ES_MQ_LIB_T=/opt/ibm/mq/lib64/libmqm_r.so
+ES_MQ_LIB_XA=/opt/ibm/mq/lib64/libmqcxa64.so
+ES_MQ_LIB_XA_T=/opt/ibm/mq/lib64/libmqcxa64_r.so
+HOME=/home/support
+```
+
 #### Remove your container
 ```
 podman stop mq

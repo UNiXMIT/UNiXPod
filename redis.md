@@ -17,6 +17,11 @@ docker.io/redis
 podman exec -it redis bash
 ```
 
+### Flush Redis
+```
+podman exec -it redis redis-cli flushall
+```
+
 ### Remove your container
 ```
 podman stop redis
