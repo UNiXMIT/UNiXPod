@@ -66,7 +66,7 @@ https://ibm.co/3JKDGaL
 db2 catalog tcpip node <NODENAME> remote <HOSTNAME|IP_ADDRESS> server <SERVICE_NAME|PORT_NUMBER>
 db2 catalog database <DBNAME> at node <NODENAME>
 db2 terminate
-db2 connect to <DBNAME> user <USERNAME>
+db2 connect to <DBNAME> user <USERNAME> using <PASSWORD>
 ```
 NODENAME - A local nickname you can set for the computer that has the database you want to catalog.  
 DBNAME - Name of remote database to catalog.  
