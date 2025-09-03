@@ -7,18 +7,13 @@ podman run -d --name mssql \
 -e "ACCEPT_EULA=Y" \
 -e "MSSQL_COLLATION=SQL_Latin1_General_CP1_CI_AS" \
 -p 1433:1433 \
+--log-opt max-size=50m --log-opt max-file=5 \
 --health-cmd '/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P "strongPassword123" -Q "SELECT 1" -b -o /dev/null' \
 --health-interval 10s \
 --health-timeout 3s \
 --health-retries 10 \
 --health-start-period 10s \
 mcr.microsoft.com/mssql/server:2022-latest
-```
-
-### Rotate/Limit Logs
-Add the following to the 'podman run' command.  
-```
---log-opt max-size=50m --log-opt max-file=5
 ```
 
 ### Attach to container
