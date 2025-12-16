@@ -22,6 +22,16 @@ icr.io/db2_community/db2
 podman exec -it db2 bash -c "su - support"
 ```
 
+### Password Management
+Change password:  
+```
+podman exec -it db2 passwd support
+```
+Turn off password expiry:  
+```
+podman exec -it db2 chage -M -1 -m 0 -W 0 support
+```
+
 ### Connect to database and execute SQL
 ```
 db2 CONNECT TO SUPPORT
