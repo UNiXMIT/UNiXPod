@@ -74,7 +74,7 @@ https://ibm.co/3JKDGaL
 ### Catalog remote database on client
 ```
 db2 catalog tcpip node <NODENAME> remote <HOSTNAME|IP_ADDRESS> server <SERVICE_NAME|PORT_NUMBER>
-db2 catalog database <DBNAME> at node <NODENAME>
+db2 catalog database <DBNAME> as <ALIAS> at node <NODENAME>
 db2 terminate
 db2 connect to <DBNAME> user <USERNAME> using <PASSWORD>
 ```
