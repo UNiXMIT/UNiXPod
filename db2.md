@@ -80,6 +80,13 @@ db2 connect to <DBNAME> user <USERNAME> using <PASSWORD>
 ```
 NODENAME - A local nickname you can set for the computer that has the database you want to catalog.  
 DBNAME - Name of remote database to catalog.  
+```
+db2 list node directory
+db2 list database directory
+db2 uncatalog node <NODENAME>
+db2 uncatalog database <DBNAME>
+db2 terminate
+```
 
 ### Install ODBC Driver (cmd as Admin on Windows only)
 ```
