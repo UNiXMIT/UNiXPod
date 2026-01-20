@@ -1,7 +1,7 @@
 # MSSQL
 ### Pull and Run container
 ```
-podman pull mcr.microsoft.com/mssql/server:2022-latest
+podman pull mcr.microsoft.com/mssql/server:2025-latest
 podman run -d --name mssql \
 -e "SA_PASSWORD=strongPassword123" \
 -e "ACCEPT_EULA=Y" \
@@ -13,7 +13,7 @@ podman run -d --name mssql \
 --health-timeout 3s \
 --health-retries 10 \
 --health-start-period 10s \
-mcr.microsoft.com/mssql/server:2022-latest
+mcr.microsoft.com/mssql/server:2025-latest
 ```
 
 ### Attach to container
