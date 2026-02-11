@@ -9,7 +9,7 @@ podman run -d --name redis \
 --health-timeout 3s \
 --health-retries 10 \
 --health-start-period 10s \
-docker.io/redis
+docker.io/redis redis-server --requirepass "strongPassword123"
 ```
 
 ### Attach to container
