@@ -1,4 +1,4 @@
-# ZeroTier
+# Talescale
 ### Pull and Run container
 ```
 podman pull tailscale/tailscale:latest
