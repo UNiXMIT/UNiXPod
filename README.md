@@ -21,6 +21,6 @@ Commands should work with Docker too, just replace 'podman' with 'docker' in the
 - [PostgreSQL](postgres.md)
 - [Redis](redis.md)
 - [rsyslog](rsyslog.md)
-- [socksProxy](socksProxy.md)
+- [SOCKS5 Proxy](socksProxy.md)
 - [Sybase](sybase.md)
 - [Tailscale](tailscale.md)
