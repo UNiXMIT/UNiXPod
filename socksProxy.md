@@ -12,7 +12,7 @@ serjs/go-socks5-proxy:latest
 
 ### Test SOCKS Proxy
 ```
-curl --proxy socks5h://127.0.0.1:1080 -U support:strongPassword#123 
+curl --proxy socks5h://127.0.0.1:1080 -U support:strongPassword#123 -I https://checkip.amazonaws.com/
 ```
 
 ### Attach to container
