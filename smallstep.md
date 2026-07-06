@@ -32,6 +32,7 @@ podman restart smallstep
 ```
 mkdir /home/support/smallstep/aws
 podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal"  --san "support" --not-after=8760h
+cat /home/support/smallstep/aws/aws.crt /home/support/smallstep/certs/intermediate_ca.crt /home/support/smallstep/certs/root_ca.crt > /home/support/smallstep/certs/fullchain_ca.crt
 ```
 
 ### Renew Certificate
