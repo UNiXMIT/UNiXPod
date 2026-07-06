@@ -20,6 +20,10 @@ Wildcard
 ```
 podman exec -it minica minica --domains '*.foo.com'
 ```
+Multiple Domains with Wildcard
+```
+podman exec -it minica minica --domains '*.eu-west-2.compute.amazonaws.com,*.eu-west-2.compute.internal,support'
+```
 
 ### Install Root CA on Windows
 ```
