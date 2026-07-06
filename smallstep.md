@@ -31,7 +31,7 @@ podman restart smallstep
 ### Generate Server Certificate & Key
 ```
 mkdir /home/support/smallstep/aws
-podman exec -it smallstep step ca certificate "*.eu-west-2.compute.amazonaws.com" aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.internal" --san "support" --not-after=8760h
+podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal"  --san "support" --not-after=8760h
 ```
 
 ### Renew Certificate
