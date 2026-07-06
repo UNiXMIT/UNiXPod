@@ -1,4 +1,4 @@
-# smallstep
+# smallstep CA
 ### Pull and Run container
 ```
 podman pull docker.io/mallstep/step-ca:latest
