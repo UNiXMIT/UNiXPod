@@ -36,7 +36,7 @@ podman exec -it smallstep step ca certificate "*.eu-west-2.compute.amazonaws.com
 
 ### Renew Certificate
 ```
-podman exec -it smallstep step ca renew aws.crt aws.key
+podman exec -it smallstep step ca renew aws/aws.crt aws/aws.key
 ```
 
 ### Install Root\Intermediate CA Certificate on Windows
