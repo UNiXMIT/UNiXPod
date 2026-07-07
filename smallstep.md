@@ -43,7 +43,8 @@ cat /home/support/smallstep/aws/aws.crt /home/support/smallstep/certs/intermedia
 
 ### Install Root\Intermediate CA Certificate on Windows
 ```
-certutil -user -addstore "Root" fullchain_ca.crt
+certutil -user -addstore "Root" root_ca.crt
+certutil -user -addstore "Root" intermediate_ca.crt
 ```
 
 ### Remove your container
