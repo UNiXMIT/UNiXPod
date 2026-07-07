@@ -32,18 +32,18 @@ podman restart smallstep
 ```
 mkdir /home/support/smallstep/aws
 podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal"  --san "support" --not-after=8760h
-cat /home/support/smallstep/aws/aws.crt /home/support/smallstep/certs/intermediate_ca.crt /home/support/smallstep/certs/root_ca.crt > /home/support/smallstep/certs/fullchain_ca.crt
+cat /home/support/smallstep/aws/aws.crt /home/support/smallstep/certs/intermediate_ca.crt /home/support/smallstep/certs/root_ca.crt > /home/support/smallstep/aws/fullchain_ca.crt
 ```
 
 ### Renew Certificate
 ```
 podman exec -it smallstep step ca renew aws/aws.crt aws/aws.key
+cat /home/support/smallstep/aws/aws.crt /home/support/smallstep/certs/intermediate_ca.crt /home/support/smallstep/certs/root_ca.crt > /home/support/smallstep/aws/fullchain_ca.crt
 ```
 
 ### Install Root\Intermediate CA Certificate on Windows
 ```
-certutil -user -addstore "Root" root_ca.crt
-certutil -user -addstore "Root" intermediate_ca.crt
+certutil -user -addstore "Root" fullchain_ca.crt
 ```
 
 ### Remove your container
