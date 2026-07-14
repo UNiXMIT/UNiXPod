@@ -39,11 +39,15 @@ mkdir /home/support/smallstep/aws
 podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal" --san "support" --san "localhost" --san "127.0.0.1" --san "::1" --not-after=8760h
 ```
 
-### RSA Keys
-step ca creates ECDSA keys by default. If you require RSA keys, add the `--kty RSA` option:  
-```
-podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal" --san "support" --san "localhost" --san "127.0.0.1" --san "::1" --not-after=8760h --kty RSA
-```
+### Options
+`--kty=kty` The kty to build the certificate upon. If unset, default is EC.  
+
+kty is a case-sensitive string and must be one of:
+  - EC: Create an elliptic curve keypair
+  - OKP: Create an octet key pair (for "Ed25519" curve)
+  - RSA: Create an RSA keypair
+
+`--size=size` The size (in bits) of the key for RSA and oct key types. RSA keys require a minimum key size of 2048 bits. If unset, default is 2048 bits for RSA keys and 128 bits for oct keys.  
 
 ### Renew Certificate
 ```
