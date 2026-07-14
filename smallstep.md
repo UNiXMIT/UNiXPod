@@ -15,7 +15,7 @@ podman run -itd --name smallstep \
 docker.io/smallstep/step-ca:latest
 ```
 
-### Increase Min/Max/Default Cert Duration
+### Increase Min/Max/Default Certificate Duration
 Minimum: 5 minutes  
 Maximum: 2 years and 30 days (18240 hours)  
 Default: 1 year (8760 hours)  
@@ -28,23 +28,45 @@ jq '.authority.claims = {
 podman restart smallstep
 ```
 
+### Create CA Bundle
+```
+cat /home/support/smallstep/certs/intermediate_ca.crt /home/support/smallstep/certs/root_ca.crt > /home/support/smallstep/certs/fullchain_ca.crt
+```
+
 ### Generate Server Certificate & Key
 ```
 mkdir /home/support/smallstep/aws
 podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal" --san "support" --san "localhost" --san "127.0.0.1" --san "::1" --not-after=8760h
-cat /home/support/smallstep/aws/aws.crt /home/support/smallstep/certs/intermediate_ca.crt /home/support/smallstep/certs/root_ca.crt > /home/support/smallstep/aws/fullchain_ca.crt
+```
+
+### RSA Keys
+step ca creates ECDSA keys by default. If you require RSA keys, add the `--kty RSA` option:  
+```
+podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal" --san "support" --san "localhost" --san "127.0.0.1" --san "::1" --not-after=8760h --kty RSA
 ```
 
 ### Renew Certificate
 ```
 podman exec -it smallstep step ca renew aws/aws.crt aws/aws.key
-cat /home/support/smallstep/aws/aws.crt /home/support/smallstep/certs/intermediate_ca.crt /home/support/smallstep/certs/root_ca.crt > /home/support/smallstep/aws/fullchain_ca.crt
 ```
 
 ### Install Root\Intermediate CA Certificate on Windows
 ```
 certutil -user -addstore "Root" root_ca.crt
 certutil -user -addstore "Root" intermediate_ca.crt
+```
+
+### Verify Server Certificate Against CA Certificate
+```
+openssl verify -CAfile fullchain_ca.crt aws.crt
+
+# Output
+aws.crt: OK
+```
+
+### Display the Contents of a Certificate
+```
+openssl x509 -in aws.crt -noout -text
 ```
 
 ### Remove your container
