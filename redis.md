@@ -19,7 +19,7 @@ podman exec -it redis bash
 
 ### Flush Redis
 ```
-podman exec -it redis redis-cli -a strongPassword123 flushall
+podman exec -e REDISCLI_AUTH=strongPassword123 redis redis-cli flushall
 ```
 
 ### Remove your container
