@@ -37,6 +37,7 @@ cat /home/support/smallstep/certs/intermediate_ca.crt /home/support/smallstep/ce
 ```
 mkdir /home/support/smallstep/aws
 podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal" --san "support" --san "localhost" --san "127.0.0.1" --san "::1" --not-after=8760h
+cat aws/aws.crt aws/aws.key > aws/aws.pem
 ```
 
 ### Options
