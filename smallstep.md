@@ -28,16 +28,10 @@ jq '.authority.claims = {
 podman restart smallstep
 ```
 
-### Create CA Bundle
-```
-cat /home/support/smallstep/certs/intermediate_ca.crt /home/support/smallstep/certs/root_ca.crt > /home/support/smallstep/certs/fullchain_ca.crt
-```
-
 ### Generate Server Certificate & Key
 ```
 mkdir /home/support/smallstep/aws
 podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal" --san "support" --san "localhost" --san "127.0.0.1" --san "::1" --not-after=8760h
-cat aws/aws.crt aws/aws.key > aws/aws.pem
 ```
 
 ### Options
@@ -55,15 +49,18 @@ kty is a case-sensitive string and must be one of:
 podman exec -it smallstep step ca renew aws/aws.crt aws/aws.key
 ```
 
-### Install Root\Intermediate CA Certificate on Windows
+### Install Root\Intermediate CA Certificate and Verify on Windows
 ```
-certutil -user -addstore "Root" root_ca.crt
-certutil -user -addstore "Root" intermediate_ca.crt
+certutil -user -addstore Root root_ca.crt
+certutil -user -addstore CA intermediate_ca.crt
+certutil -verify aws.crt
+...
+CertUtil: -verify command completed successfully.
 ```
 
-### Verify Server Certificate Against CA Certificate
+### Verify Server Certificate Against CA Certificate with OpenSSL
 ```
-openssl verify -CAfile fullchain_ca.crt aws.crt
+openssl verify -CAfile certs/root_ca.crt -untrusted certs/intermediate_ca.crt aws/aws.crt
 
 # Output
 aws.crt: OK
