@@ -32,7 +32,14 @@ podman restart smallstep
 ```
 mkdir /home/support/smallstep/aws
 podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal" --san "support" --san "localhost" --san "127.0.0.1" --san "::1" --not-after=8760h
-cat aws/aws.crt certs/intermediate_ca.crt > aws.pem
+cat aws/aws.crt certs/intermediate_ca.crt aws/aws.key > aws/aws.pem
+```
+
+### Generate Client Certificate & Key
+```
+mkdir /home/support/smallstep/client
+podman exec -it smallstep step ca certificate client client/client.crt client/client.key --not-after=8760h
+cat client/client.crt certs/intermediate_ca.crt client/client.key > client/client.pem
 ```
 
 ### Options
@@ -48,13 +55,13 @@ kty is a case-sensitive string and must be one of:
 ### Renew Certificate
 ```
 podman exec -it smallstep step ca renew aws/aws.crt aws/aws.key
-cat aws/aws.crt certs/intermediate_ca.crt > aws.pem
+cat aws/aws.crt certs/intermediate_ca.crt aws/aws.key > aws.pem
 ```
 
 ### Install Root\Intermediate CA Certificate and Verify on Windows
 ```
-certutil -user -addstore Root root_ca.crt
-certutil -user -addstore CA intermediate_ca.crt
+certutil -addstore Root root_ca.crt
+certutil -addstore CA intermediate_ca.crt
 certutil -verify aws.crt
 ...
 CertUtil: -verify command completed successfully.
