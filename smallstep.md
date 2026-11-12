@@ -30,16 +30,20 @@ podman restart smallstep
 
 ### Generate Server Certificate & Key
 ```
-mkdir /home/support/smallstep/aws
+mkdir -p /home/support/smallstep/aws
 podman exec -it smallstep step ca certificate aws aws/aws.crt aws/aws.key --san "*.eu-west-2.compute.amazonaws.com" --san "*.eu-west-2.compute.internal" --san "support" --san "localhost" --san "127.0.0.1" --san "::1" --not-after=8760h
-cat aws/aws.crt certs/intermediate_ca.crt aws/aws.key > aws/aws.pem
+cat smallstep/aws/aws.crt smallstep/certs/intermediate_ca.crt smallstep/aws/aws.key > smallstep/aws/aws.pem
+# PFX Certificate
+openssl pkcs12 -export -out smallstep/aws/aws.pfx -inkey smallstep/aws/aws.key -in smallstep/aws/aws.crt -certfile smallstep/certs/intermediate_ca.crt
 ```
 
 ### Generate Client Certificate & Key
 ```
-mkdir /home/support/smallstep/client
+mkdir -p /home/support/smallstep/client
 podman exec -it smallstep step ca certificate client client/client.crt client/client.key --not-after=8760h
-cat client/client.crt certs/intermediate_ca.crt client/client.key > client/client.pem
+cat smallstep/client/client.crt smallstep/certs/intermediate_ca.crt smallstep/client/client.key > smallstep/client/client.pem
+# PFX Certificate
+openssl pkcs12 -export -out smallstep/client/client.pfx -inkey smallstep/client/client.key -in smallstep/client/client.crt -certfile smallstep/certs/intermediate_ca.crt
 ```
 
 ### Options
