@@ -6,6 +6,7 @@ Commands should work with Docker too, just replace 'podman' with 'docker' in the
 ## Containers
 - [Apache](apache.md)
 - [APLS](apls.md)
+- [Caddy](caddy.md)
 - [DB2](db2.md)
 - [HAProxy](haproxy.md)
 - [Informix](informix.md)
@@ -15,6 +16,7 @@ Commands should work with Docker too, just replace 'podman' with 'docker' in the
 - [MySQL](mysql.md)
 - [NGiNX](nginx.md)
 - [NODE](node.md)
+- [Ollama](ollama.md)
 - [OpenLDAP](openldap.md)
 - [OpenLDAP for Enterprise Server](openldapES.md)
 - [Oracle](oracle.md)
